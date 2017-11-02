@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 框架 -->
+	<script src="../templates/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../templates/bootstrap.min.css">
+	<script src="../templates/bootstrap.min.js"></script>
+	<script src="../templates/vue.js"></script>
+	<script src="../templates/axios.min.js"></script>
+	
+	<!-- 导入js文件 -->
+	<script type="text/javascript" src="../js/index.js"></script>
+</head>
+
+<style>
+	.input-size {
+		width:100%;
+		height:45px;
+	}
+
+
+</style>
+<body style="background: url(../images/01658PICNrU_1024.jpg);background-size: cover">
+
+<div class="container-fluid" id="app">
+	<div class="row">
+  		<div class="col-sm-7 col-md-7 col-lg-7"></div>
+  		<div class="col-sm-3 col-md-3 col-lg-3 text-center" style="margin-top:18%; border:1px solid green; border-radius:8px;">
+  			
+  			<div style="margin-top:7%;">
+  				<h4 style="">中国深圳联通</h4>
+  			</div>
+  			<br>
+			<div class="input-group">
+   				 <span class="input-group-addon">
+   				 	手机
+   				 </span>
+    				<input type="text" class="form-control input-size" id="" aria-describedby="inputGroupSuccess1Status" placeholder="请输入手机号" v-model="phoneNumber">
+  			</div>
+			<br>
+  			<div class="input-group">
+    				<input type="text" class="form-control input-size" id="" aria-describedby="inputGroupSuccess1Status" placeholder="请输入验证码" v-model="number">
+    				<span class="input-group-addon">
+    				<a class="btn btn-sm" href="#" role="button" v-on:click="getPassword">获取验证码</a>
+    				</span>
+  			</div>
+  			<br>
+			
+  			<button type="button" class="btn btn-success btn-md input-size" v-on:click="login">登录</button>
+  			<br>
+  			<br>
+  			<br>
+
+  		</div>
+	</div>
+</div>
+
+
+
+
+<script>
+
+var opp = new Vue({
+
+	el:"#app",
+	data:{
+		phoneNumber:"",
+		number:""
+	},
+
+	methods:{
+		login: function(){
+
+			axios.get('www.abc.com',{
+			  params:{
+			    phone:this.phoneNumber,
+				password:this.number
+			  }
+			})
+			.then(function(response){
+			  console.log("response");
+			})
+			.catch(function(err){
+			  console.log(err);
+			});
+		},
+
+		getPassword: function(){
+
+			axios.post('www.cba.com',{
+			  params:{}
+			})
+			.then(function(response){
+			  console.log("response");
+			})
+			.catch(function(err){
+			  console.log(err);
+			});
+			}
+		},
+	
+})
+
+
+
+
+</script>
+
+</body>
+</html>
